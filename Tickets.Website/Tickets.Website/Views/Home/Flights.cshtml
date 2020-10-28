@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Tickets.Website.Areas.Identity.Data.Ticket>
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+
+    @foreach (var ticket in Model)
+    {
+    <div class="col-md-12">
+        <div class="card ticket-tab">
+
+            <div class="card-header">
+                <i class="fas fa-plane fa-sm"></i>
+                <label class="price-lbl">@ticket.Flight.AviaCompany</label>
+            </div>
+
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-3 ticket-card-column">
+                        <table>
+                            <tr>
+                                <td>Flight</td>
+                                <td>@ticket.FlightId</td>
+                            </tr>
+                            <tr>
+                                <td>Place</td>
+                                <td>@ticket.Place</td>
+                            </tr>
+                            <tr>
+                                <td>Class</td>
+                                @if (ticket.Class == 'O')
+                                {
+                                    <td>Econom</td>
+                                }
+                                else
+                                {
+                                    <td>Buisness</td>
+                                }
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-md-2">
+                        <table>
+                            <tr><td class="td-time">@ticket.Flight.DepartureDate.ToShortTimeString()</td></tr>
+                            <tr><td>@ticket.Flight.DepartureDate.ToShortDateString()</td></tr>
+                            <tr><td>@ticket.Flight.Route.DepartureAirport</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="col-md-2">
+                        <table>
+                            <tr><td class="td-time">@ticket.Flight.ArrivalDate.ToShortTimeString()</td></tr>
+                            <tr><td>@ticket.Flight.ArrivalDate.ToShortDateString()</td></tr>
+                            <tr><td>@ticket.Flight.Route.ArrivalAirport</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="col-md-4 ticket-card-column">
+                        <table>
+                            <tr>
+                                <td><i class="fas fa-briefcase fa-sm"></i></td>
+                                @if (ticket.IsHandLuggageIncluded)
+                                {
+                                    <td class="td-info">Included</td>
+                                }
+                                else
+                                {
+                                    <td class="td-info">Not included</td>
+                                }
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-suitcase-rolling fa-lg"></i></td>
+                                @if (ticket.IsLuggageIncluded)
+                                {
+                                    <td>Included</td>
+                                }
+                                else
+                                {
+                                    <td>Not included</td>
+                                }
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card-footer text-right">
+                <label class="price-lbl">@ticket.Price $</label>
+                <button class="mybtn" id="buy">Buy</button>
+            </div>
+        </div>
+    </div>
+        
+        <br />
+    }
+
+
+
+    @*<table id="tickets-table">
+            <tr>
+                <th>Ticket Id</th>
+                <th>Departure date</th>
+                <th>Arrival date</th>
+                <th>Place</th>
+                <th>Class</th>
+                <th>Price</th>
+                <th>Flight Id</th>
+            </tr>
+            @foreach (var ticket in Model)
+            {
+                <tr>
+                    <td>@ticket.Id</td>
+                    <td>@ticket.Flight.DepartureDate</td>
+                    <td>@ticket.Flight.ArrivalDate</td>
+                    <td>@ticket.Place</td>
+                    <td>@ticket.Class</td>
+                    <td>@ticket.Price</td>
+                    <td>@ticket.FlightId</td>
+                </tr>
+            }
+        </table>*@
+</body>
+</html>

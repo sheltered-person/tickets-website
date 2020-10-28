@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Tickets.Website.Areas.Identity.Data.TicketPerson>
+@{
+    ViewData["Title"] = "CurrentTickets";
+    Layout = "~/Views/Shared/_TicketsLayout.cshtml";
+}
+
+@foreach (var ticketPerson in Model)
+{
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card ticket-tab">
+
+                <div class="card-header">
+                    <label >@ticketPerson.Ticket.Flight.Route.DepartureAirport - @ticketPerson.Ticket.Flight.Route.ArrivalAirport</label><br />
+                    <small class="text-muted">Flight @ticketPerson.Ticket.FlightId, @ticketPerson.Ticket.Flight.AviaCompany</small>
+                </div>
+
+                <div class="card-block">
+                    <div class="row">
+
+                        <div class="col-md-3 ticket-user-column" id="user-columm">
+                            <small class="text-muted">Departure</small>
+                            <label>@ticketPerson.Ticket.Flight.DepartureDate.ToString("R")</label>
+                        </div>
+
+                        <div class="col-md-3 ticket-user-column">
+                            <small class="text-muted">Arrival</small>
+                            <label>@ticketPerson.Ticket.Flight.ArrivalDate.ToString("R")</label>
+                        </div>
+
+                        <div class="col-md-2 ticket-user-column">
+                            <small class="text-muted">Information</small>
+                            <label class="label-up">Place @ticketPerson.Ticket.Place</label>
+                            <label>@ticketPerson.Ticket.Price $</label>
+                        </div>
+
+                        <div class="col-md-2 ticket-user-column">
+                            <small class="text-muted">Passenger</small>
+                            <a asp-action="Edit" asp-controller="Home" asp-route-id="@ticketPerson.PersonId">@ticketPerson.Person.Firstname @ticketPerson.Person.Lastname</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+

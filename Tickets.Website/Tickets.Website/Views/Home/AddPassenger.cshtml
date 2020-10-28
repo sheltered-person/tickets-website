@@ -1,0 +1,41 @@
+﻿@model Tickets.Website.Areas.Identity.Data.Person
+@{
+    ViewData["Title"] = "AddPassenger";
+    Layout = "~/Views/Shared/_PassengersLayout.cshtml";
+    ViewData["ActivePage"] = Tickets.Website.Views.Shared.ManagePassengersPages.AddPassenger;
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="col-md-10">
+        <form asp-action="AddPassenger" asp-controller="Home">
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label">Lastname</label>
+                <input type="text" asp-for="Lastname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label">Firstname</label>
+                <input type="text" asp-for="Firstname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Patronymic" class="control-label">Patronymic</label>
+                <input type="text" asp-for="Patronymic" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label">Birthday</label>
+                <input type="date" asp-for="Birthday" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PassportNum" class="control-label">Passport number</label>
+                <input type="text" asp-for="PassportNum" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="mybtn">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

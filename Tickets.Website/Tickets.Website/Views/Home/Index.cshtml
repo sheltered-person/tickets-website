@@ -1,0 +1,51 @@
+﻿@model Tickets.Website.Areas.Identity.Data.SearchQuery
+@{
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card search-tab">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active">Avia tickets</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <form asp-action="SearchTickets" asp-controller="Home">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" asp-for="DepartureAirport" placeholder="Departure airport"/>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" asp-for="ArrivalAirport" placeholder="Arrival airport">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="date" class="form-control" asp-for="DepartureDate" placeholder=@DateTime.Now>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" asp-for="Class" placeholder="O">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <button type="submit" class="mybtn">Find</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

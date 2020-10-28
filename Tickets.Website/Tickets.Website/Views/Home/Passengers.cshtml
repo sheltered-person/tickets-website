@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Tickets.Website.Areas.Identity.Data.Person>
+@{
+    ViewData["Title"] = "Passengers";
+    Layout = "~/Views/Shared/_PassengersLayout.cshtml";
+    ViewData["ActivePage"] = Tickets.Website.Views.Shared.ManagePassengersPages.Passengers;
+}
+
+<!DOCTYPE html>
+
+    @foreach (var person in Model)
+    {
+        <div class="row person-row">
+            <div class="col-md-10">
+                <div class="card person-tab">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active">
+                                    <i class="fas fa-user-alt fa-sm"></i>
+                                    <label class="tickets-label">@(person.Lastname + ' ' + person.Firstname + ' ' + person.Patronymic)</label>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td class="td-person">Birthday </td>
+                                <td class="td-person">@person.Birthday.Date.ToShortDateString()</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="td-person">Passport </td>
+                                <td class="td-person">@person.PassportNum</td>
+                                <td>
+                                    <a asp-action="Edit" asp-controller="Home" asp-route-id="@person.Id">
+                                        <button type="button" class="mybtn" id="edit">Edit</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    
